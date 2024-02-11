@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        Вам на почту было отправлено письмо с кодом.
+        <br>
+        <form>
+            <label for="name">Ваш код подтверждения:</label>
+            <input type="text" id="code">
+        </form>
+        <input type="submit" value="Подтвердить">
+    </form>
+{% endblock %}

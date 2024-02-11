@@ -1,0 +1,14 @@
+<!-- home.html -->
+
+<h1>Welcome to the Home Page</h1>
+
+<p>Total Mailings: {{ total_mailings }}</p>
+<p>Active Mailings: {{ active_mailings }}</p>
+<p>Unique Clients: {{ unique_clients }}</p>
+
+<h2>Random Blog Posts</h2>
+<ul>
+    {% for post in random_blog_posts %}
+        <li><a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Mailings{% endblock %}
+
+{% block content %}
+    <h2>Manage Mailings</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Frequency</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mailing in mailings %}
+                <tr>
+                    <td>{{ mailing.id }}</td>
+                    <td>{{ mailing.start_time }}</td>
+                    <td>{{ mailing.end_time }}</td>
+                    <td>{{ mailing.get_frequency_display }}</td>
+                    <td>{{ mailing.get_status_display }}</td>
+                    <td>
+                        <a href="{% url 'mailing_service:edit_mailing' mailing.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'mailing_service:delete_mailing' mailing.id %}" class="btn btn-danger">Delete</a>
+                        <a href="{% url 'mailing_service:disable_mailing' mailing.id %}" class="btn btn-danger">Disable</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'mailing_service:create_mailing' %}" class="btn btn-success">Create Mailing</a>
+{% endblock %}

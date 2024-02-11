@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Авторизация</h2>
+<form method="post" action="{% url 'users:login' %}">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Отправить</button>
+    <a href="{% url 'users:password_reset' %}">Забыл пароль</a>
+</form>
+{% endblock %}
+  

@@ -1,0 +1,19 @@
+<!-- templates/create_mailing.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Create Mailing{% endblock %}
+
+{% block content %}
+    <h2>Create Mailing</h2>
+    <form method="post" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Create Mailing</button>
+    </form>
+    
+    <div class="mt-3">
+        <a href="{% url 'mailing_service:manage_clients' %}" class="btn btn-secondary">Manage Clients</a>
+        <a href="{% url 'mailing_service:create_message' %}" class="btn btn-secondary">Create Message</a>
+    </div>
+{% endblock %}

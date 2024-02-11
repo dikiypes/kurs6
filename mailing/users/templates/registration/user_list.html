@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Список пользователей</h2>
+  <ul>
+    {% for user in users_list %}
+      <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{% if user.is_active %}
+                      active
+                    {% else %}
+                      block
+                    {% endif %}
+                </td>
+                <td>
+                    <form method="post" action="{% url 'users:user_list' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_id" value="{{ user.id }}">
+                        <button type="submit">Block/Unblock</button>
+                    </form>
+                </td>
+            </tr>
+    {% endfor %}
+  </ul>
+{% endblock %}

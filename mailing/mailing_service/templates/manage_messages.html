@@ -1,0 +1,18 @@
+<!-- templates/manage_messages.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Manage Messages{% endblock %}
+
+{% block content %}
+    <h2>Manage Messages</h2>
+    <ul>
+        {% for message in messages %}
+            <li>{{ message.subject }} - {{ message.body }}
+            <a href="{% url 'mailing_service:edit_message' pk=message.pk %}">Edit</a>
+            <a href="{% url 'mailing_service:delete_message' pk=message.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'mailing_service:create_message' %}" class="btn btn-primary">Create Message</a>
+{% endblock %}

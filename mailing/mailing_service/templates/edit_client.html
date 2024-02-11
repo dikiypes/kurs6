@@ -1,0 +1,15 @@
+<!-- edit_client.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Edit Client{% endblock %}
+
+{% block content %}
+    <h2>Edit Client</h2>
+    <form method="post" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+    <p><a href="{% url 'mailing_service:manage_clients' %}">Back to Manage Clients</a></p>
+{% endblock %}
